@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byType">
+   <!--default-autowire="constructor">--> <!-- 需要一个入参为注入bean类型的构造函数。 自动注入时，是根据注入bean类型匹配，不是根据参数名匹配。 -->
+   <!--default-autowire="byType" >--> <!-- byType注入与autoWiringDAO的ID没有关系，与autoWiringDAO的类型有关。 -->
+   <!--default-autowire="byName" >--> <!-- byName要求AutoWiringService的字段变量名和bean的id一样，才能byName自动注入。  -->
+
+
+    <bean id="autoWiringService" class="com.hnayyc.coffee.spring.autowiring.AutoWiringService" />
+
+
+    <bean id="autoWiringDAO" class="com.hnayyc.coffee.spring.autowiring.AutoWiringDAO"/>
+</beans>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	                    http://www.springframework.org/schema/tx 
+	                    http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+	                    http://www.springframework.org/schema/context
+	                    http://www.springframework.org/schema/context/spring-context-4.3.xsd"
+	default-lazy-init="true">
+
+	<!-- >>>>>>>>>> 通过XML配置文件设值注入 <<<<<<<<<<
+	 通过<property>注入，是对InjectionServiceImpl类中private InjectionDao injectionDao使用Get和Set方法注入。
+	 注意：使用设值注入方式，InjectionServiceImpl类中如果有其他形式的构造函数重载，如InjectionServiceImpl(String arg)，
+		   则必须要编写对应的InjectionServiceImpl()构造函数。
+	 -->
+	<bean id="propertyInjectionService" class="com.hnayyc.coffee.spring.beanannotation.service.PropertyInjectionService">
+		<property name="injectionDao" ref="injectionDao"/>
+	</bean>
+
+	<!-- >>>>>>>>>> 通过XML配置文件用构造函数注入 <<<<<<<<<<
+	 通过<constructor-arg>注入，是从InjectionServiceImpl的构造函数中传入injectionDao对象实现注入。
+	-->
+	<bean id="constructorArgInjectionService" class="com.hnayyc.coffee.spring.beanannotation.service.ConstructorArgInjectionService">
+		<constructor-arg name="injectionDao" ref="injectionDao"/>
+	</bean>
+
+	<bean id="injectionDao" class="com.hnayyc.coffee.spring.beanannotation.dao.InjectionDaoImpl" />
+</beans>
