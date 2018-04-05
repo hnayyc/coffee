@@ -3,8 +3,9 @@ package com.hnayyc;
 import com.hnayyc.coffee.ioc.bean.SetterBean;
 import com.hnayyc.coffee.ioc.bean.SpringWine;
 import com.hnayyc.coffee.ioc.service.UserService;
-import com.hnayyc.coffee.spring.reflect.MyReflect;
-import com.hnayyc.coffee.spring.SpringIoC;
+import com.hnayyc.imooc.spring.SpringTX;
+import com.hnayyc.imooc.spring.reflect.MyReflect;
+import com.hnayyc.imooc.spring.SpringIoC;
 
 /**
  * Hello world!
@@ -13,8 +14,16 @@ import com.hnayyc.coffee.spring.SpringIoC;
 public class App 
 {
     public static void main( String[] args ) {
-        testReflect();
+//        testReflect();
+//        testSpingIoc();
+//        testSpringWine();
+//        testAnnotation();
+//        SpringTX.transactionByProxyStart();
+//        SpringTX.transactionByAspectjStart();
+        SpringTX.transactionByAnnotationStart();
     }
+
+
 
     public static void testReflect() {
         MyReflect myReflect = new MyReflect();
